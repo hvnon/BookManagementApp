@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Thống kê doanh thu";
+}
+
+<h2>THỐNG KÊ DOANH THU</h2>
+
+@using (Html.BeginForm("Index", "Home"))
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-12">
+                <label style="margin-left: 15px">Từ ngày: </label>
+                <input type="date" name="fromDate" 
+                value="@(Request.Form["fromDate"])" class="form-control" 
+                       />
+                <label style="margin-left: 15px">Đến ngày: </label>
+                <input type="date" name="toDate"
+                       value="@(Request.Form["toDate"])" class="form-control"
+                       />
+                <input type="submit" value="Thống kê" />
+            </div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Tên đại lý</th>
+                <th>Tiền trả</th>
+            </tr>
+
+            @for (var i = 0; i < ViewBag.agencies.Count; i++)
+            {
+                <tr>
+                    <td>@ViewBag.agencies[i].Name</td>
+                    <td>
+                            @if (Model != null)
+                            {
+                                <span>@String.Format("{0:N0}", Model[i])</span>
+                            }
+                            else{
+                               <span>0</span> 
+                            }
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td class="text-right"><b>Tổng tiền trả: </b></td>
+                <td style="color:blue"><b>@String.Format("{0:N0}", ViewBag.totalPayment)</b></td>
+            </tr>
+            <tr>
+                <td class="text-right"><b>Tiền lời: </b></td>
+                <td style="color:green;"><b>@String.Format("{0:N0}", ViewBag.revenue)</b></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+

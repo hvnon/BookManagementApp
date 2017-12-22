@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DAL.Entities.Report>
+
+@{
+    ViewBag.Title = "Danh sách báo cáo cho NXB";
+}
+
+<h2>DANH SÁCH BÁO CÁO CHO NXB</h2>
+
+<p>
+    @Html.ActionLink("Tạo báo cáo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Mã phiếu
+        </th>
+        <th>
+           Nhà xuất bản
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Ngày tạo
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.ID }) 
+        </td>
+    </tr>
+}
+
+</table>

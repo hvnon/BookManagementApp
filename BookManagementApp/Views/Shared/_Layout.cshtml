@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/main.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Nhóm 5", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Sách", "Index", "Books")</li>
+                    <li>@Html.ActionLink("NXB", "Index", "Publishers")</li>
+                    <li>@Html.ActionLink("Đại lý", "Index", "Agencies")</li>
+                    <li>@Html.ActionLink("Phiếu nhập", "Index", "Receipts")</li>
+                    <li>@Html.ActionLink("Phiếu xuất", "Index", "Invoices")</li>
+                    <li>@Html.ActionLink("Báo cáo của đại lý", "Index", "AgencyReports")</li>
+                    <li>@Html.ActionLink("Báo cáo cho NXB", "Index", "Reports")</li>
+                    <li>@Html.ActionLink("Thống kê nợ đại lý", "Index", "AgencyDebts")</li>
+                    <li>@Html.ActionLink("Thống kê nợ NXB", "Index", "Debts")</li>
+                    <li>@Html.ActionLink("Tồn kho", "Index", "Stocks")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
